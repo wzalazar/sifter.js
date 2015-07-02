@@ -7,7 +7,7 @@
 	"readmeFilename": "README.md",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/brianreavis/sifter.js.git"
+		"url": "git://github.com/wzalazar/sifter.js.git"
 	},
 	"main": ["sifter.js"],
 	"ignore": [
