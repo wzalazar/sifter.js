@@ -4,6 +4,10 @@
 [![Build Status](http://img.shields.io/travis/brianreavis/sifter.js/master.svg?style=flat)](https://travis-ci.org/brianreavis/sifter.js)
 [![Coverage Status](http://img.shields.io/coveralls/brianreavis/sifter.js/master.svg?style=flat)](https://coveralls.io/r/brianreavis/sifter.js)
 
+New option
+
+* **sortMatchFirst**<br>This option sorts the first matching of alphabetical way , ascending or descending depends of options sort.
+
 Sifter is a client and server-side library (via [UMD](https://github.com/umdjs/umd)) for textually searching arrays and hashes of objects by property – or multiple properties. It's designed specifically for autocomplete. The process is three-step: *score*, *filter*, *sort*.
 
 * **Supports díåcritîçs.**<br>For example, if searching for "montana" and an item in the set has a value of "montaña", it will still be matched. Sorting will also play nicely with diacritics.
@@ -31,9 +35,11 @@ var sifter = new Sifter([
 var result = sifter.search('anna', {
 	fields: ['title', 'location', 'continent'],
 	sort: [{field: 'title', direction: 'asc'}],
-	limit: 3
+	limit: 3,
+	sortMatchFirst:{field: 'field'}
 });
 ```
+
 
 Seaching will provide back meta information and an "items" array that contains objects with the index (or key, if searching a hash) and a score that represents how good of a match the item was. Items that did not match will not be returned.
 

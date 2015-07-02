@@ -19,18 +19,19 @@
     "url": "git://github.com/brianreavis/sifter.js.git"
   },
   "scripts": {
-  	"test": "mocha -R list"
+    "test": "mocha -R list"
   },
   "bin": {
     "sifter": "./bin/sifter.js"
   },
   "dependencies": {
-    "optimist": "0.6.x",
-    "cardinal": "0.4.x",
     "async": "0.2.x",
+    "cardinal": "0.4.x",
     "humanize": "0.0.x",
+    "lodash": "^3.10.0",
     "microtime": "~1.4.2",
-    "node-csv": "https://github.com/voodootikigod/node-csv/tarball/master"
+    "node-csv": "https://github.com/voodootikigod/node-csv/tarball/master",
+    "optimist": "0.6.x"
   },
   "devDependencies": {
     "mocha": "1.12.x",

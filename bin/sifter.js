@@ -26,6 +26,7 @@ var csv       = require('node-csv');
 var Stream    = require('stream');
 var humanize  = require('humanize');
 var microtime = require('microtime');
+var _ = require('lodash');
 var Sifter    = require('../lib/sifter');
 var highlight = function(obj) { return cardinal.highlight(JSON.stringify(obj), {json: true}); };
 
