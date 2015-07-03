@@ -330,17 +330,20 @@
 	 * @param {string} fielName
 	 */
 	Sifter.prototype.sortMatchFirst = function(items,fielName) {
-		var maxLength = _.chain(items)
-	    .sortBy(function(place){ return _.unescape(place[fielName]).length; })
-	    .pluck(fielName)
-	    .last()
-	    .value()
-	    .length;
+		if (items.length){
+			var maxLength = _.chain(items)
+			    .sortBy(function(place){ return _.unescape(place[fielName]).length; })
+			    .pluck(fielName)
+			    .last()
+			    .value()
+			    .length;
 
-		return _.map(items,function(item){
-				  item[fielName] = _.padRight(item[fielName],parseInt(maxLength),' ');
-				  return item;
-				});
+			return _.map(items,function(item){
+					  item[fielName] = _.padRight(item[fielName],parseInt(maxLength),' ');
+					  return item;
+					});
+			
+		}
 	};
 
 	/**
