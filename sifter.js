@@ -381,16 +381,25 @@
 		// perform search and sort
 		if (query.length) {
 
-			var 
-				fielName = options.sortMatchFirst.field,
-				firstItems = [];
+			if (options.sortMatchFirst){
+				var 
+					fielName = options.sortMatchFirst.field,
+					firstItems = [];
 
-			_.each(self.items, function(item){
-				if (item[fielName].search(search.tokens[0].regex)===0){
-					firstItems.push(item);
+				_.each(self.items, function(item){
+					if (item[fielName].search(search.tokens[0].regex)===0){
+						firstItems.push(item);
+					}
+				});
+				self.sortMatchFirst(firstItems,fielName);
+			}
+			
+			self.iterator(self.items, function(item, id) {
+				score = fn_score(item);
+				if (options.filter === false || score > 0) {
+					search.items.push({'score': score, 'id': id});
 				}
 			});
-			self.sortMatchFirst(firstItems,fielName);
 			
 			self.iterator(self.items, function(item, id) {
 				score = fn_score(item);
