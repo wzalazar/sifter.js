@@ -51,7 +51,6 @@
 
     var i, n, regex, letter;
     var tokens = [];
-    debugger
     var words = query.split(this.settings.tokenizePattern ? /this.settings.tokenizePattern+/ : / +/);
 
     for (i = 0, n = words.length; i < n; i++) {
