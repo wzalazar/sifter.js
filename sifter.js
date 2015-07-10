@@ -51,7 +51,8 @@
 
     var i, n, regex, letter;
     var tokens = [];
-    var words = query.split(this.settings.tokenizePattern || / +/);
+    debugger
+    var words = query.split(this.settings.tokenizePattern ? /this.settings.tokenizePattern+/ : / +/);
 
     for (i = 0, n = words.length; i < n; i++) {
       regex = escape_regex(words[i]);
@@ -140,12 +141,12 @@
         return 0;
       } 
       score = token.string.length / value.length;
-      if (sifter.options.sortMatchFirst){
-        return sifter.maxPos - pos;
-      }
       if (pos === 0){
         score += 0.5;
       } 
+      if (sifter.options.sortMatchFirst){
+        return score + (sifter.maxPos - pos);
+      }
       return score;
     };
 
@@ -338,7 +339,7 @@
    * @param {string} fielName
    */
   Sifter.prototype.sortMatchFirst = function(items,fielName) {
-    if (items.length){
+    
       var maxLength = _.chain(items)
           .sortBy(function(place){ return _.unescape(place[fielName]).length; })
           .pluck(fielName)
@@ -351,7 +352,7 @@
             return item;
           });
       
-    }
+    
   };
 
 
